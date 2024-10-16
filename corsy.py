@@ -65,7 +65,7 @@ else:
     urls = create_stdin_list(target, sys.stdin)
 
 
-def cors(target, header_dict, delay, skip_wildcard):
+def cors(target, header_dict, delay, skip_wildcard = False):
     url = target
     root = host(url)
     parsed = urlparse(url)
