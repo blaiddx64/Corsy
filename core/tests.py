@@ -6,7 +6,7 @@ from core.utils import host, load_json
 
 details = load_json(sys.path[0] + '/db/details.json')
 
-def passive_tests(url, headers, skip_wildcard):
+def passive_tests(url, headers, skip_wildcard = False):
     root = host(url)
     acao_header, acac_header = headers.get('access-control-allow-origin', None), headers.get('access-control-allow-credentials', None)
     if acao_header == '*' and not skip_wildcard:
@@ -22,7 +22,7 @@ def passive_tests(url, headers, skip_wildcard):
             return {url : info}
 
 
-def active_tests(url, root, scheme, header_dict, delay, skip_wildcard):
+def active_tests(url, root, scheme, header_dict, delay, skip_wildcard = False):
     origin = scheme + '://' + root
     headers = requester(url, scheme, header_dict, origin)
     acao_header, acac_header = headers.get('access-control-allow-origin', None), headers.get('access-control-allow-credentials', None)
